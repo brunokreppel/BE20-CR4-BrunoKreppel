@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 17. Nov 2023 um 13:18
+-- Erstellungszeit: 17. Nov 2023 um 13:21
 -- Server-Version: 10.4.28-MariaDB
 -- PHP-Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `be20_cr4_brunokreppel_biglibrary`
 --
+CREATE DATABASE IF NOT EXISTS `be20_cr4_brunokreppel_biglibrary` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `be20_cr4_brunokreppel_biglibrary`;
 
 -- --------------------------------------------------------
 
