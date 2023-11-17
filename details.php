@@ -2,6 +2,7 @@
 require_once 'components/db_Connection.php';
 $cards = "";
 
+// this takes the id of an entry and saves it in a variable that is later used to display the thing attached to the id
 if(isset($_GET["id"]) && !empty($_GET["id"])) {
     $sql = "SELECT * FROM `books` WHERE `id` = $_GET[id]";
     $result = mysqli_query($conn, $sql);
@@ -16,6 +17,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])) {
                         <h5 class='card-title fw-bold'>{$row['title']}</h5>
                         <hr class='my-2'>
                         <p class='card-text fw-light'><span class='fw-bold'>Author:</span> {$row['author_first_name']} {$row['author_last_name']}</p>
+                        // The publisher name is included in the URL using urlencode() to make sure that if there are special characters that it does not break.
                         <p class='card-text fw-light'><span class='fw-bold'>Publisher:</span> <a href='publisher.php?publisher=" . urlencode($row['publisher_name']) . "'>{$row['publisher_name']}</a></p>
                         <p class='card-text fw-light'><span class='fw-bold'>Description:</span> {$row['short_description']}</p>
                         <p class='card-text fw-light'><span class='fw-bold'>Type:</span> {$row['type']}</p>

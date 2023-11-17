@@ -6,10 +6,15 @@ $displayAlert = false;
 $displayMedia = false;
 $cards = "";
 
+// same thing as in the index but with a differrent querry.
+// same thing with ?id={$row['id']}  but with publisher_name instead of id
 if (isset($_GET['publisher']) && !empty($_GET['publisher'])) {
     $publisher = $_GET['publisher'];
     $result = mysqli_query($conn, "SELECT * FROM `books` WHERE `publisher_name` = '$publisher'");
-    
+
+// Check if the database query was successful. If true, set $displayMedia to true,
+// indicating that there is data to display. If false, set $displayAlert to true,
+// indicating that there was an error fetching data or the provided publisher is invalid.    
     if ($result) {
         $displayMedia = true;
     } else {
@@ -45,6 +50,9 @@ if (isset($_GET['publisher']) && !empty($_GET['publisher'])) {
 </div>
 
 <div class="container">
+
+    <!-- wrote the php here instead of above just to do somthing differrent... just played around -->
+    
     <?php
     if ($displayAlert) {
         echo "<div class='alert alert-danger' role='alert'>Error fetching data or invalid publisher.</div>";

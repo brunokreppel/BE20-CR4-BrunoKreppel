@@ -1,4 +1,5 @@
 <?php
+// same delete thing we did in the livecoding nothing special here...
 
 require_once 'components/db_Connection.php';
 

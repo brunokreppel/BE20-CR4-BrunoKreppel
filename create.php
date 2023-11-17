@@ -12,8 +12,12 @@ if (isset($_POST["create"])) {
     $publisher_name = $_POST["publisher_name"];
     $publisher_address = $_POST["publisher_address"];
     $publish_date = $_POST["publish_date"];
+    
+    // the sql querry that is running if i press create in the form
 
-    $sql = "INSERT INTO `books`(`title`, `image`, `isbn_code`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`) VALUES ('$title', '$image', '$isbn_code', '$short_description', '$type', '$author_first_name', '$author_last_name', '$publisher_name', '$publisher_address', '$publish_date')";
+    $sql = "INSERT INTO `books`(`title`, `image`, `isbn_code`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`)
+            VALUES ('$title', '$image', '$isbn_code', '$short_description', '$type', '$author_first_name', '$author_last_name', '$publisher_name', '$publisher_address', '$publish_date')";
+    // if it succesfully runs i display this alert else the other
 
     if (mysqli_query($conn, $sql)) {
         echo "
@@ -57,6 +61,9 @@ mysqli_close($conn);
     </style>
 
     <script>
+        // cool function i made that is onSubmit. So that it runs before the php/sql thing. It controlls the max length of things that get pushed into the Database.
+        // if the input is too long it returns false and fires an alert if not true and then the rest of the code runs.
+        // you can still do querry incetion and delete my whole Database tho. at least i think so. so please dont :$
         function checkFormLength() {
             var maxLengths = {
                 'title': 255,
@@ -94,6 +101,7 @@ mysqli_close($conn);
         <h1 class="fw-bold text-center my-5 display-4">Create Entry</h1>
         <hr class='my-2 mb-5'>
     </div>
+    
     <div class="container">
         <form action="" method="post" name="updateForm" onsubmit="return checkFormLength();">
             <label for="title" class="form-label">Title:</label>
